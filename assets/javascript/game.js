@@ -18,10 +18,13 @@
 //When the value of "Guesses Left" = 0:
 //the value for "Losses" increases by 1
 //the value for "Guesses Left" returns to default of 9
-//the game "chooses" a new letter
+//the game restarts - without refreshing the page 
+//and the game "chooses" a new letter
 
 //When the user presses a letter (e.g., 'c') that the computer was
 //"thinking" of:
 //Wins: value increases by 1
+//Game starts over (without refreshing page)
 //Computer chooses a new letter
+
 
