@@ -1,17 +1,20 @@
-//Default scores:
-//Wins: 0
-//Losses: 0
-//Guesses Left: 9
-//Your Guesses so far:
+//1) Create default score values:
 
-var Wins = 0
-var Losses = 0
-var guessesLeft = 9
-var guessesSoFar = 
+var wins = 0;
+var losses = 0;
+var guessesLeft = 9;
+var guessedLetters = [];
+var computerChoices = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
 
-document.getElementById("fname").onkeyup = function() {userKey()};
-function userKey() {
-    var guess = document.getElementById("fname");
+//2) User presses a letter key (use onkeyup)
+//Grabs user's keystrokes
+//Might need a line if they press something else 
+//that creates an alert
+document.onkeyup = function(event) {
+	guessesLeft--;
+	var guessedLetters = String.fromCharCode(event.keyCode).toLowerCase();
+}
+
 
 //User presses a LETTER key (onkeyup)
 //Will need a line if they press something else 
