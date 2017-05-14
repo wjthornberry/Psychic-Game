@@ -4,7 +4,14 @@
 //Guesses Left: 9
 //Your Guesses so far:
 
-//Set up User 1
+var Wins = 0
+var Losses = 0
+var guessesLeft = 9
+var guessesSoFar = 
+
+document.getElementById("fname").onkeyup = function() {userKey()};
+function userKey() {
+    var guess = document.getElementById("fname");
 
 //User presses a LETTER key (onkeyup)
 //Will need a line if they press something else 
