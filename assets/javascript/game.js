@@ -4,6 +4,7 @@ var wins = 0;
 var losses = 0;
 var guessesLeft = 9;
 var guessedLetters = [];
+//This array holds the letters A-Z that the computer will randomly choose from.
 var computerChoices = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
 
 //2) User presses a letter key (use onkeyup)
@@ -15,10 +16,9 @@ document.onkeyup = function(event) {
 	var guessedLetters = String.fromCharCode(event.keyCode).toLowerCase();
 }
 
+//This function will pick the letter
+function chooseLetter
 
-//User presses a LETTER key (onkeyup)
-//Will need a line if they press something else 
-//that creates an alert that notifies the user
 
 //If user presses a letter (e.g., 'h') that the computer was
 //not "thinking" of:
