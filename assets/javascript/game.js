@@ -10,7 +10,7 @@ var computerChoices = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l
 
 //2) User presses a letter key (use onkeyup)
 //Grabs user's keystrokes
-//Might need a line if they press something else 
+//Will need a line if they press something else 
 //that creates an alert
 document.onkeyup = function(e) {
 	
