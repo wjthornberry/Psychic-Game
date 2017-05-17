@@ -40,8 +40,9 @@ var reset = function() {
 
 document.onkeyup = function() {
 	
-	var letter = String.fromCharCode(event.keyCode).toLowerCase();
-		console.log(letter);
+	var userGuess = String.fromCharCode(event.keyCode).toLowerCase();
+		console.log(userGuess);
+		guessedLetters.push(userGuess);
 
 	// if/else loops to compare user's input to computer's "guess"
 	if (userGuess===computerGuess) {
@@ -56,13 +57,6 @@ document.onkeyup = function() {
 	} else {
 		alert("Oops! You didn't type a letter. Wanna try that again?");
 	}
-
-	// 
-
-
-
-
-	
 }
 
 
