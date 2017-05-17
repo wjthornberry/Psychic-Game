@@ -38,6 +38,8 @@ var reset = function() {
 // Must create an alert if something else is pressed.
 
 document.onkeyup = function() {
+	// User presses a key and guessesLeft decreases by 1
+	guessesLeft--
 	
 	var userGuess = String.fromCharCode(event.keyCode).toLowerCase();
 		console.log(userGuess);
@@ -48,14 +50,25 @@ document.onkeyup = function() {
 		wins++ && guessesLeft--;
 		//for testing; take out after successfully built
 		alert("wins: " + wins);
-		alert("Whoah! You're right! How'd you do that? You ARE psychic!")
+		alert("Whoah! You're right! How'd you do that? You ARE psychic!");
+		reset();
 	}
+
 	if (userGuess!==computerGuess) {
 		losses++ && guessesLeft--;
 		//for testing; take out after successfully built
 		alert("losses: " + losses);
-		alert("Wait – I thought you said you were a psychic? It's okay – you can try again.")
+
+	} if(guessesLeft === 0) {
+		// User loses. HTML is updated to reflect the loss. 
+		losses++;
+		document.querySelector('#losses').innerHTML = "Losses: " + losses;
+		alert("Wait – I thought you said you were a psychic? It's okay – you can try again.");
+		// Call the reset
+		reset();
+
 	} else {
+		// When user presses any key besides a letter, we alert him or her
 		alert("Oops! That wasn't a letter. Wanna try that again?");
 	}
 };
