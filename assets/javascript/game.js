@@ -13,7 +13,6 @@ var computerGuess = computerChoices[Math.floor(Math.random()*computerChoices.len
 	console.log(computerGuess);
 
 // User has 9 guesses.
-
 var updateGuessesLeft = function() {
 	// Grab HTML elements to update guessesLeft.
 	document.querySelector('#guessesLeft').innerHTML = "Number of guesses left: " + guessesLeft;
@@ -49,15 +48,17 @@ document.onkeyup = function() {
 		wins++ && guessesLeft--;
 		//for testing; take out after successfully built
 		alert("wins: " + wins);
+		alert("Whoah! You're right! How'd you do that? You ARE psychic!")
 	}
 	if (userGuess!==computerGuess) {
 		losses++ && guessesLeft--;
 		//for testing; take out after successfully built
 		alert("losses: " + losses);
+		alert("Wait – I thought you said you were a psychic? It's okay – you can try again.")
 	} else {
-		alert("Oops! You didn't type a letter. Wanna try that again?");
+		alert("Oops! That wasn't a letter. Wanna try that again?");
 	}
-}
+};
 
 
 //If user presses a letter (e.g., 'h') that the computer was
