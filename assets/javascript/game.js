@@ -1,28 +1,49 @@
-//1) Create default score values:
+// Declare variables and set default score values:
 
 var wins = 0;
 var losses = 0;
 var guessesLeft = 9;
 var guessedLetters = [];
 
-//This array holds the letters A-Z that the computer will randomly choose from.
+// This array holds the letters A-Z that the computer will randomly choose from.
 var computerChoices = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
 
-//2) User presses a letter key (use onkeyup)
-//Grabs user's keystrokes
-//Will need a line if they press something else 
-//that creates an alert
-document.onkeyup = function(e) {
-	
-	var userGuess = String.fromCharCode(event.keyCode).toLowerCase();
-
-	console.log(userGuess);
-
-//3) Computer "picks" a letter
-	var computerGuess = computerChoices[Math.floor(Math.random()*computerChoices.length)];
-	
+// Computer "picks" a letter randomly.
+var computerGuess = computerChoices[Math.floor(Math.random()*computerChoices.length)];
 	console.log(computerGuess);
 
+// User has 9 guesses.
+
+var updateGuessesLeft = function() {
+	// Grab HTML elements to update guessesLeft.
+	document.querySelector('#guessesLeft').innerHTML = "Number of guesses left: " + guessesLeft;
+};
+
+var updateGuessedLetters = function() {
+	// Display user's guesses.
+	document.querySelector('#guessedLetters').innerHTML = "Your guesses: " + guessedLetters;
+
+};
+
+// Function to reset game
+var reset = function() {
+	totalGuesses = 9;
+	guessesLeft = 9;
+	guessedLetter = [];
+
+	updateGuessesLeft();
+	updateGuessedLetters();
+};
+
+// When the user presses a key, this grabs his or her keystrokes
+// Must create an alert if something else is pressed.
+
+document.onkeyup = function() {
+	
+	var letter = String.fromCharCode(event.keyCode).toLowerCase();
+		console.log(letter);
+
+	// if/else loops to compare user's input to computer's "guess"
 	if (userGuess===computerGuess) {
 		wins++ && guessesLeft--;
 		//for testing; take out after successfully built
@@ -35,6 +56,10 @@ document.onkeyup = function(e) {
 	} else {
 		alert("Oops! You didn't type a letter. Wanna try that again?");
 	}
+
+	// 
+
+
 
 
 	
@@ -59,5 +84,18 @@ document.onkeyup = function(e) {
 //Wins: value increases by 1 wins++ in loop
 //Game starts over (without refreshing page)
 //Computer chooses a new letter
+
+	//push to add user's guesses to an empty variable, guessedLetters
+
+     // For-Loop that will repeat three times.
+      // for (var i = 1; i < 4; i++) {
+
+      //   // Each time it asks the user for their #1, #2, or #3 TV show.
+      //   tvShow = prompt("What's your #" + i + " favorite TV show?");
+
+      //   // It then takes the user's response and "pushes" (or adds) the variable to the end of the favTVshows array.
+      //   favTVshows.push(tvShow);
+      // }
+
 
 
