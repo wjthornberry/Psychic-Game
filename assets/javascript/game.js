@@ -1,3 +1,8 @@
+// Needs work: 
+// Update the computer's guess, as it's only guessing once now
+// If you hit the wrong key, it still counts as a loss, but only an alert should pop up
+
+
 // Declare variables and set default score values:
 
 var wins = 0;
@@ -41,23 +46,26 @@ document.onkeyup = function() {
 	// User presses a key and guessesLeft decreases by 1
 	guessesLeft--
 	
+	// Takes user's guess and ensures it is converted to lower case
 	var userGuess = String.fromCharCode(event.keyCode).toLowerCase();
 		console.log(userGuess);
 		guessedLetters.push(userGuess);
 
 	// if/else loops to compare user's input to computer's "guess"
 	if (userGuess===computerGuess) {
-		wins++ && guessesLeft--;
+		// wins++ && guessesLeft--;
 		//for testing; take out after successfully built
-		alert("wins: " + wins);
+		// alert("wins: " + wins);
+		document.querySelector('#wins').innerHTML = "Wins: " + wins;
 		alert("Whoah! You're right! How'd you do that? You ARE psychic!");
 		reset();
 	}
 
 	if (userGuess!==computerGuess) {
-		losses++ && guessesLeft--;
+		// losses++ && guessesLeft--;
 		//for testing; take out after successfully built
-		alert("losses: " + losses);
+		document.querySelector('#guessesLeft').innerHTML = "Number of guesses left: " + guessesLeft;
+		// alert("losses: " + losses);
 
 	} if(guessesLeft === 0) {
 		// User loses. HTML is updated to reflect the loss. 
