@@ -43,8 +43,6 @@ var reset = function() {
 // Must create an alert if something else is pressed.
 
 document.onkeyup = function() {
-	// User presses a key and guessesLeft decreases by 1
-	guessesLeft--
 	
 	// Takes user's guess and ensures it is converted to lower case
 	var userGuess = String.fromCharCode(event.keyCode).toLowerCase();
@@ -53,23 +51,23 @@ document.onkeyup = function() {
 
 	// if/else loops to compare user's input to computer's "guess"
 	if (userGuess===computerGuess) {
-		// wins++ && guessesLeft--;
+		wins++ && guessesLeft--;
 		//for testing; take out after successfully built
 		// alert("wins: " + wins);
 		document.querySelector('#wins').innerHTML = "Wins: " + wins;
-		alert("Whoah! You're right! How'd you do that? You ARE psychic!");
+		alert("Whoah! You're right! How'd you do that? You ARE psychic!");	
 		reset();
 	}
 
-	if (userGuess!==computerGuess) {
-		// losses++ && guessesLeft--;
+	else if (userGuess!==computerGuess) {
+		guessesLeft--;
 		//for testing; take out after successfully built
 		document.querySelector('#guessesLeft').innerHTML = "Number of guesses left: " + guessesLeft;
-		// alert("losses: " + losses);
+		alert("guessesLeft: " + guessesLeft);
 
-	} if(guessesLeft === 0) {
+	} else if (guessesLeft===0) {
 		// User loses. HTML is updated to reflect the loss. 
-		losses++;
+		// losses++;
 		document.querySelector('#losses').innerHTML = "Losses: " + losses;
 		alert("Wait – I thought you said you were a psychic? It's okay – you can try again.");
 		// Call the reset
