@@ -36,7 +36,7 @@ var updateGuessedLetters = function() {
 
 };
 
-// Reset function - not working
+// Reset function
 var reset = function() {
 	totalGuesses = 9;
 	guessesLeft = 9;
@@ -47,12 +47,33 @@ var reset = function() {
 	updateLetterToGuess();
 }
 
-
 updateLetterToGuess();
 // updateGuessesLeft;
 
+// Displays image of female psychic when user wins. What's the best way 
+// to add this to the middle of the page? CSS?
+function displayWinPsychic() {
+    var x = document.createElement("IMG");
+    x.setAttribute("src", "assets/images/psychic.jpg");
+    x.setAttribute("width", "304");
+    x.setAttribute("height", "228");
+    x.setAttribute("alt", "Female Psychic");
+    document.body.appendChild(x);
+}
+
+// Displays image of Zoltar when user loses. What's the best way
+// to add this to the middle of the page? CSS?
+function displayLosePsychic() {
+    var x = document.createElement("IMG");
+    x.setAttribute("src", "assets/images/zoltar.jpg");
+    x.setAttribute("width", "304");
+    x.setAttribute("height", "228");
+    x.setAttribute("alt", "Zoltar");
+    document.body.appendChild(x);
+}
+
 // When the user presses a key, this grabs his or her keystrokes
-// Must create an alert if a non-letter key is pressed.
+// How do I create an alert to notify the user that he or she hit a non-alpha key?
 
 document.onkeyup = function() {
 		guessesLeft--;
@@ -71,6 +92,7 @@ document.onkeyup = function() {
                 wins++, reset();
                 alert("Whoah! You're right! How'd you do that? You ARE psychic!"); 
                 document.querySelector('#wins').innerHTML = "Wins: " + wins;
+                displayWinPsychic();
                        
         } 
 
@@ -78,71 +100,7 @@ document.onkeyup = function() {
             // Lose and update the loss 
             losses++, reset();
             document.querySelector('#losses').innerHTML = "Losses: " + losses;
-            alert("Sorry. The letter was " + letterToGuess);
+            alert("Sorry, you lost. The letter was " + letterToGuess);
+            displayLosePsychic();
         }    
 };
-
-		// if/else loops to compare user's input to computer's "guess"
-		// if (userGuess===computerGuess) {
-		// 	wins++ && guessesLeft--;
-		// 	//for testing; take out after successfully built
-		// 	// alert("wins: " + wins);
-		// 	document.querySelector('#wins').innerHTML = "Wins: " + wins;
-		// 	alert("Whoah! You're right! How'd you do that? You ARE psychic!");	
-		// 	reset();
-		// }
-
-		// else if (userGuess!==computerGuess) {
-		// 	guessesLeft--;
-			//for testing; take out after successfully built
-			// document.querySelector('#guessesLeft').innerHTML = "Number of guesses left: " + guessesLeft;
-			// alert("guessesLeft: " + guessesLeft);
-
-		// } else if (guessesLeft===0) {
-			// User loses. HTML is updated to reflect the loss. 
-			// losses++;
-			// document.querySelector('#losses').innerHTML = "Losses: " + losses;
-			// alert("Wait – I thought you said you were a psychic? It's okay – you can try again.");
-			// Call the reset
-			// reset();
-
-		// } else {
-			// When user presses any key besides a letter, we alert him or her
-		// 	alert("Oops! That wasn't a letter. Wanna try that again?");
-		// }
-
-
-
-//If user presses a letter (e.g., 'h') that the computer was
-//not "thinking" of:
-//"Your Guesses so far" adds the character 'h'
-//"Guesses left" decreases by 1 (to 8)
-//console.log everything during testing ex: alert("wins: " + wins);
-//but take out after testing
-
-//When the value of "Guesses Left" = 0:
-//the value for "Losses" increases by 1 losses++ in loop
-//the value for "Guesses Left" returns to default of 9
-//the game restarts - without refreshing the page 
-//and the game "chooses" a new letter
-
-//When the user presses a letter (e.g., 'c') that the computer was
-//"thinking" of:
-//Wins: value increases by 1 wins++ in loop
-//Game starts over (without refreshing page)
-//Computer chooses a new letter
-
-	//push to add user's guesses to an empty variable, guessedLetters
-
-     // For-Loop that will repeat three times.
-      // for (var i = 1; i < 4; i++) {
-
-      //   // Each time it asks the user for their #1, #2, or #3 TV show.
-      //   tvShow = prompt("What's your #" + i + " favorite TV show?");
-
-      //   // It then takes the user's response and "pushes" (or adds) the variable to the end of the favTVshows array.
-      //   favTVshows.push(tvShow);
-      // }
-
-
-
