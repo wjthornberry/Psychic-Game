@@ -3,10 +3,11 @@
 // If you hit the wrong key, it still counts as a loss, but only an alert should pop up
 
 
-// Declare variables and set default score values:
+// Set default score and guess values:
 
-var wins = 0	;
+var wins = 0;
 var losses = 0;
+var guesses = 9;
 var guessesLeft = 9;
 var guessedLetters = [];
 var letterToGuess = null;
@@ -39,7 +40,7 @@ var updateGuessedLetters = function() {
 var reset = function() {
 	totalGuesses = 9;
 	guessesLeft = 9;
-	guessedLetter = [];
+	guessedLetters = [];
 
 	updateGuessesLeft();
 	updateGuessedLetters();
@@ -64,23 +65,22 @@ document.onkeyup = function() {
 
 		if (guessesLeft > 0){
 			// User guesses correctly
-            if (userGuess == letterToGuess){
-                wins++;
+            if (userGuess===computerGuess){
+                wins++, reset();
                 alert("wins: " + wins);
                 document.querySelector('#wins').innerHTML = "Wins: " + wins;
-                alert("Whoah! You're right! How'd you do that? You ARE psychic!");
-                reset();
-            } 
-            } else if (guessesLeft == 0){
+
+                // Call reset
+                alert("Whoah! You're right! How'd you do that? You ARE psychic!");        
+        } 
+
+        } else if (guessesLeft == 0){
             // Lose and update the loss 
-            losses++;
+            losses++, reset();
             document.querySelector('#losses').innerHTML = "Losses: " + losses;
             alert("Sorry. The letter was " + letterToGuess);
-            alert("Wait – I thought you said you were a psychic? It's okay – you can try again.");
-            // Then we'll call the reset. 
-            reset();
-        }
-
+        }    
+};
 
 		// if/else loops to compare user's input to computer's "guess"
 		// if (userGuess===computerGuess) {
@@ -110,7 +110,7 @@ document.onkeyup = function() {
 			// When user presses any key besides a letter, we alert him or her
 		// 	alert("Oops! That wasn't a letter. Wanna try that again?");
 		// }
-};
+
 
 
 //If user presses a letter (e.g., 'h') that the computer was
