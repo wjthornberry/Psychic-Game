@@ -9,6 +9,7 @@ var wins = 0	;
 var losses = 0;
 var guessesLeft = 9;
 var guessedLetters = [];
+var letterToGuess = null;
 
 // This array holds the letters A-Z that the computer will randomly choose from.
 var computerChoices = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
@@ -24,6 +25,7 @@ var updateGuessesLeft = function() {
 };
 
 var updateLetterToGuess = function() {
+	// Computer repeatedly guesses
   this.letterToGuess = this.computerChoices[Math.floor(Math.random() * this.computerChoices.length)];
 };
 
@@ -33,7 +35,7 @@ var updateGuessedLetters = function() {
 
 };
 
-// Function to reset game
+// Reset function - not working
 var reset = function() {
 	totalGuesses = 9;
 	guessesLeft = 9;
@@ -41,46 +43,71 @@ var reset = function() {
 
 	updateGuessesLeft();
 	updateGuessedLetters();
-};
+	updateLetterToGuess()
+}
+
+updateLetterToGuess();
+updateGuessesLeft;
 
 // When the user presses a key, this grabs his or her keystrokes
-// Must create an alert if something else is pressed.
+// Must create an alert if a non-letter key is pressed.
 
 document.onkeyup = function() {
-	
+		guessesLeft--;
 	// Takes user's guess and ensures it is converted to lower case
 	var userGuess = String.fromCharCode(event.keyCode).toLowerCase();
+		// Testing -- remove
 		console.log(userGuess);
-		guessedLetters.push(userGuess);
+	guessedLetters.push(userGuess);
+	updateGuessedLetters();
+	updateGuessesLeft();
 
-	// if/else loops to compare user's input to computer's "guess"
-	if (userGuess===computerGuess) {
-		wins++ && guessesLeft--;
-		//for testing; take out after successfully built
-		// alert("wins: " + wins);
-		document.querySelector('#wins').innerHTML = "Wins: " + wins;
-		alert("Whoah! You're right! How'd you do that? You ARE psychic!");	
-		reset();
-	}
+		if (guessesLeft > 0){
+			// User guesses correctly
+            if (userGuess == letterToGuess){
+                wins++;
+                document.querySelector('#wins').innerHTML = "Wins: " + wins;
+                alert("Yes, you are psychic!");
+                reset();
+            } 
+            } else if (guessesLeft == 0){
+            // Lose and update the loss 
+            losses++;
+            document.querySelector('#losses').innerHTML = "Losses: " + losses;
+            alert("Sorry, you're not psychic, maybe try again?");
+            // Then we'll call the reset. 
+            reset();
+        }
 
-	else if (userGuess!==computerGuess) {
-		guessesLeft--;
-		//for testing; take out after successfully built
-		document.querySelector('#guessesLeft').innerHTML = "Number of guesses left: " + guessesLeft;
-		alert("guessesLeft: " + guessesLeft);
 
-	} else if (guessesLeft===0) {
-		// User loses. HTML is updated to reflect the loss. 
-		// losses++;
-		document.querySelector('#losses').innerHTML = "Losses: " + losses;
-		alert("Wait – I thought you said you were a psychic? It's okay – you can try again.");
-		// Call the reset
-		reset();
+		// if/else loops to compare user's input to computer's "guess"
+		// if (userGuess===computerGuess) {
+		// 	wins++ && guessesLeft--;
+		// 	//for testing; take out after successfully built
+		// 	// alert("wins: " + wins);
+		// 	document.querySelector('#wins').innerHTML = "Wins: " + wins;
+		// 	alert("Whoah! You're right! How'd you do that? You ARE psychic!");	
+		// 	reset();
+		// }
 
-	} else {
-		// When user presses any key besides a letter, we alert him or her
-		alert("Oops! That wasn't a letter. Wanna try that again?");
-	}
+		// else if (userGuess!==computerGuess) {
+		// 	guessesLeft--;
+			//for testing; take out after successfully built
+			// document.querySelector('#guessesLeft').innerHTML = "Number of guesses left: " + guessesLeft;
+			// alert("guessesLeft: " + guessesLeft);
+
+		// } else if (guessesLeft===0) {
+			// User loses. HTML is updated to reflect the loss. 
+			// losses++;
+			// document.querySelector('#losses').innerHTML = "Losses: " + losses;
+			// alert("Wait – I thought you said you were a psychic? It's okay – you can try again.");
+			// Call the reset
+			// reset();
+
+		// } else {
+			// When user presses any key besides a letter, we alert him or her
+		// 	alert("Oops! That wasn't a letter. Wanna try that again?");
+		// }
 };
 
 
