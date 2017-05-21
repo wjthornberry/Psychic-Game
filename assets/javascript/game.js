@@ -5,7 +5,7 @@
 
 // Declare variables and set default score values:
 
-var wins = 1;
+var wins = 0;
 var losses = 0;
 var guessesLeft = 9;
 var guessedLetters = [];
