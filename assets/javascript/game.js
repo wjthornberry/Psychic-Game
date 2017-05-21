@@ -5,7 +5,7 @@
 
 // Declare variables and set default score values:
 
-var wins = 0;
+var wins = 0	;
 var losses = 0;
 var guessesLeft = 9;
 var guessedLetters = [];
@@ -21,6 +21,10 @@ var computerGuess = computerChoices[Math.floor(Math.random()*computerChoices.len
 var updateGuessesLeft = function() {
 	// Grab HTML elements to update guessesLeft.
 	document.querySelector('#guessesLeft').innerHTML = "Number of guesses left: " + guessesLeft;
+};
+
+var updateLetterToGuess = function() {
+  this.letterToGuess = this.computerChoices[Math.floor(Math.random() * this.computerChoices.length)];
 };
 
 var updateGuessedLetters = function() {
