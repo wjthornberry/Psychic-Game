@@ -43,7 +43,7 @@ var reset = function() {
 
 	updateGuessesLeft();
 	updateGuessedLetters();
-	updateLetterToGuess()
+	updateLetterToGuess();
 }
 
 updateLetterToGuess();
@@ -66,15 +66,17 @@ document.onkeyup = function() {
 			// User guesses correctly
             if (userGuess == letterToGuess){
                 wins++;
+                alert("wins: " + wins);
                 document.querySelector('#wins').innerHTML = "Wins: " + wins;
-                alert("Yes, you are psychic!");
+                alert("Whoah! You're right! How'd you do that? You ARE psychic!");
                 reset();
             } 
             } else if (guessesLeft == 0){
             // Lose and update the loss 
             losses++;
             document.querySelector('#losses').innerHTML = "Losses: " + losses;
-            alert("Sorry, you're not psychic, maybe try again?");
+            alert("Sorry. The letter was " + letterToGuess);
+            alert("Wait – I thought you said you were a psychic? It's okay – you can try again.");
             // Then we'll call the reset. 
             reset();
         }
