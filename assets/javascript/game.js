@@ -47,8 +47,9 @@ var reset = function() {
 	updateLetterToGuess();
 }
 
+
 updateLetterToGuess();
-updateGuessesLeft;
+// updateGuessesLeft;
 
 // When the user presses a key, this grabs his or her keystrokes
 // Must create an alert if a non-letter key is pressed.
@@ -59,19 +60,18 @@ document.onkeyup = function() {
 	var userGuess = String.fromCharCode(event.keyCode).toLowerCase();
 		// Testing -- remove
 		console.log(userGuess);
+
 	guessedLetters.push(userGuess);
 	updateGuessedLetters();
 	updateGuessesLeft();
 
 		if (guessesLeft > 0){
 			// User guesses correctly
-            if (userGuess===computerGuess){
+            if (userGuess==computerGuess){
                 wins++, reset();
-                alert("wins: " + wins);
+                alert("Whoah! You're right! How'd you do that? You ARE psychic!"); 
                 document.querySelector('#wins').innerHTML = "Wins: " + wins;
-
-                // Call reset
-                alert("Whoah! You're right! How'd you do that? You ARE psychic!");        
+                       
         } 
 
         } else if (guessesLeft == 0){
