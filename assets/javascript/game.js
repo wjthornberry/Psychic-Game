@@ -88,7 +88,7 @@ document.onkeyup = function() {
 
 		if (guessesLeft > 0){
 			// User guesses correctly
-            if (userGuess==computerGuess){
+            if (userGuess===computerGuess){
                 wins++, reset();
                 alert("Whoah! You're right! How'd you do that? You ARE psychic!"); 
                 document.querySelector('#wins').innerHTML = "Wins: " + wins;
