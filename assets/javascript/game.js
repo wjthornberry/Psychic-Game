@@ -100,7 +100,7 @@ document.onkeyup = function() {
             // Lose and update the loss 
             losses++, reset();
             document.querySelector('#losses').innerHTML = "Losses: " + losses;
-            alert("Sorry, you lost. The letter was " + letterToGuess);
+            alert("Sorry, you lost. The letter was " + letterToGuess + ".");
             displayLosePsychic();
         }    
 };
